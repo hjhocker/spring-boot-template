@@ -1,0 +1,1 @@
+insert into ACCOUNT (ACCOUNT_ID, FIRST_NAME) VALUES (1, 'Harrison');
