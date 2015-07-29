@@ -12,9 +12,28 @@ import javax.persistence.Table;
 public class Account implements Serializable {
 
 	private static final long serialVersionUID = -6518712641527492779L;
-	
+
 	@Id
 	@Column(name = "ACCOUNT_ID")
 	private long accountId;
+
+	@Column(name = "FIRST_NAME")
+	private String firstName;
+
+	public long getAccountId() {
+		return accountId;
+	}
+
+	public void setAccountId(long accountId) {
+		this.accountId = accountId;
+	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
 
 }

@@ -11,6 +11,7 @@ import org.h2.server.web.WebServlet;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.context.embedded.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
@@ -26,6 +27,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 //@Profile("dev")
 //@PropertySource(value="classpath:application-dev.properties")
 @Configuration
+@ComponentScan
 @EnableJpaRepositories(
 		entityManagerFactoryRef = "h2EntityManagerFactory",
 		transactionManagerRef = "h2TransactionManager",
@@ -38,7 +40,8 @@ public class H2Configuration {
     public DataSource dataSource() throws SQLException {
         EmbeddedDatabaseBuilder builder = new EmbeddedDatabaseBuilder();
         builder.setName("demo");
-        return builder.setType(EmbeddedDatabaseType.H2).build();
+        return builder.setType(EmbeddedDatabaseType.H2)
+        		.build();
     }
 	
     @Bean(name="h2EntityManagerFactory")
