@@ -1,6 +1,7 @@
 package org.test.demo.domain;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -20,15 +21,18 @@ public class Transaction implements Serializable {
 	@Column(name = "TRANSACTION_ID")
 	private Long transactionId;
 
+	@ManyToOne(fetch = FetchType.LAZY, optional = true)
+	@JoinColumn(name = "ACCOUNT_ID", insertable = false, updatable = false)
+	private Account account;
+	
 	@Column(name = "LOCATION")
 	private String location;
 
 	@Column(name = "AMOUNT")
 	private Double amount;
 
-	@ManyToOne(fetch = FetchType.LAZY, optional = true)
-	@JoinColumn(name = "TRANSACTION_ID", insertable = false, updatable = false)
-	private Account account;
+	@Column(name = "DATE")
+	private Date date;
 
 	public Long getTransactionId() {
 		return transactionId;
@@ -36,6 +40,14 @@ public class Transaction implements Serializable {
 
 	public void setTransactionId(Long transactionId) {
 		this.transactionId = transactionId;
+	}
+
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
 	}
 
 	public String getLocation() {
