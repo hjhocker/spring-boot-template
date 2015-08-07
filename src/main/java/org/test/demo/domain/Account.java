@@ -26,10 +26,10 @@ public class Account implements Serializable {
 
 	@Column(name = "FIRST_NAME")
 	private String firstName;
-
+	
 	@Column(name = "LAST_NAME")
 	private String lastName;
-
+	
 	@NotFound(action = NotFoundAction.IGNORE)
 	@OneToMany(targetEntity = Transaction.class, mappedBy = "account", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private Set<Transaction> transactions;

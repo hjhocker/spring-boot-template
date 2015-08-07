@@ -42,12 +42,12 @@ public class Transaction implements Serializable {
 		this.transactionId = transactionId;
 	}
 
-	public Date getDate() {
-		return date;
+	public Account getAccount() {
+		return account;
 	}
 
-	public void setDate(Date date) {
-		this.date = date;
+	public void setAccount(Account account) {
+		this.account = account;
 	}
 
 	public String getLocation() {
@@ -66,12 +66,12 @@ public class Transaction implements Serializable {
 		this.amount = amount;
 	}
 
-	public Account getAccount() {
-		return account;
+	public Date getDate() {
+		return date;
 	}
 
-	public void setAccount(Account account) {
-		this.account = account;
+	public void setDate(Date date) {
+		this.date = date;
 	}
 
 }
