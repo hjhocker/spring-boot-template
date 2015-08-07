@@ -1,11 +1,18 @@
 package org.test.demo.domain;
 
 import java.io.Serializable;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
 
 @Entity
 @Table(name = "ACCOUNT")
@@ -19,6 +26,13 @@ public class Account implements Serializable {
 
 	@Column(name = "FIRST_NAME")
 	private String firstName;
+	
+	@Column(name = "LAST_NAME")
+	private String lastName;
+	
+	@NotFound(action = NotFoundAction.IGNORE)
+	@OneToMany(targetEntity = Transaction.class, mappedBy = "account", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	private Set<Transaction> transactions;
 
 	public long getAccountId() {
 		return accountId;
