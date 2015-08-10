@@ -24,6 +24,6 @@ public class HelloController {
 	
 	@RequestMapping(value = "/getName")
 	public ResponseEntity<List<Account>> getAccountName() {
-		return new ResponseEntity<>(accountRepository.findByAccountId(1L), HttpStatus.OK);
+		return new ResponseEntity<>(accountRepository.findAll(), HttpStatus.OK);
 	}
 }

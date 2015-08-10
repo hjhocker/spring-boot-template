@@ -11,6 +11,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "TRANSACTION")
 public class Transaction implements Serializable {
@@ -21,8 +23,9 @@ public class Transaction implements Serializable {
 	@Column(name = "TRANSACTION_ID")
 	private Long transactionId;
 
-	@ManyToOne(fetch = FetchType.LAZY, optional = true)
+	@ManyToOne(fetch = FetchType.EAGER, optional = true)
 	@JoinColumn(name = "ACCOUNT_ID", insertable = false, updatable = false)
+	@JsonIgnore
 	private Account account;
 	
 	@Column(name = "LOCATION")

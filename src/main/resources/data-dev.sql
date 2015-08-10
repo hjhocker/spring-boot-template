@@ -20,7 +20,7 @@ insert into TRANSACTION (TRANSACTION_ID, AMOUNT, DATE, LOCATION, ACCOUNT_ID) VAL
 insert into REGISTERED_USERS (REGISTERED_USER_ID, USERNAME) VALUES (1, 'HJHOCKER');
 insert into REGISTERED_USERS (REGISTERED_USER_ID, USERNAME) VALUES (2, 'JVH');
 
-SELECT * 
-FROM Transaction t
-join account a on t.account_id = a.account_id
-and  t.location = 'CVS';
+-- SELECT * 
+-- FROM Transaction t
+-- join account a on t.account_id = a.account_id
+-- and  t.location = 'CVS';
