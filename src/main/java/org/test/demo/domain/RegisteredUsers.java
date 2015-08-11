@@ -16,8 +16,35 @@ public class RegisteredUsers implements Serializable {
 	@Id
 	@Column(name = "REGISTERED_USER_ID")
 	private Long registeredUserId;
-	
+
 	@Column(name = "USERNAME")
 	private String username;
-	
+
+	@Column(name = "TOKEN")
+	private String token;
+
+	public Long getRegisteredUserId() {
+		return registeredUserId;
+	}
+
+	public void setRegisteredUserId(Long registeredUserId) {
+		this.registeredUserId = registeredUserId;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public String getToken() {
+		return token;
+	}
+
+	public void setToken(String token) {
+		this.token = token;
+	}
+
 }
