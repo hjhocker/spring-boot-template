@@ -1,5 +1,6 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
 <link rel="import" href="../bower_components/core-ajax/core-ajax.html">
+<link rel="import" href="../bower_components/polymer-currency-filter/polymer-currency-filter.html">
 
 <polymer-element name="accounts-element">
   <template>
@@ -10,7 +11,7 @@
     <template repeat="{{account, i in accounts}}">
       <span><p>{{account.firstName}} {{account.lastName}}, # of transactions: {{account.transactions.length}}</p></span>
         <template repeat="{{transaction in accounts[i].transactions}}">
-          <p>{{transaction.transactionId}} {{transaction.amount}}<p>
+          <p>{{transaction.transactionId}}, {{transaction.amount | currency}}<p>
         </template>
     </template>
   </template>
