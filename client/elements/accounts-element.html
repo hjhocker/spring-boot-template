@@ -6,16 +6,9 @@
     <span>I'm <b>my-element</b>. This is my Shadow DOM.</span>
     <!-- to retrieve actual data, replace example.com with a real URL -->
     <core-ajax url="http://localhost:9999/api/getAccounts" auto response="{{accounts}}" handleAs="json"></core-ajax>
+    <p>The number of accounts is {{accounts.length}}</p>
     <template repeat="{{account in accounts}}">
       <span><p>{{account.firstName}} {{account.lastName}}</p></span>
     </template>
   </template>
-  <script>
-      Polymer({
-        keys: function(input) {
-          return Object.keys(input);
-        }
-      });
-  </script>
-
 </polymer-element>
