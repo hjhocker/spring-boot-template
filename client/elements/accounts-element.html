@@ -1,11 +1,13 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
 <link rel="import" href="../bower_components/core-ajax/core-ajax.html">
 
-<polymer-element name="my-element" noscript>
+<polymer-element name="accounts-element" noscript>
   <template>
     <span>I'm <b>my-element</b>. This is my Shadow DOM.</span>
     <!-- to retrieve actual data, replace example.com with a real URL -->
     <core-ajax url="http://localhost:9999/api/getAccounts" auto response="{{resp}}"></core-ajax>
-    <textarea value="{{resp}}"></textarea>
+    <template is="dom-repeat" items="{{resp}}">
+      <span>hahaha {{item}}</span>
+    </template>
   </template>
 </polymer-element>
