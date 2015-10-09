@@ -1,3 +1,4 @@
+<link rel="import" href="../bower_components/webcomponentsjs/webcomponents.js">
 <link rel="import" href="../bower_components/polymer/polymer.html">
 <link rel="import" href="../bower_components/core-ajax/core-ajax.html">
 <link rel="import" href="../bower_components/polymer-currency-filter/polymer-currency-filter.html">
@@ -17,9 +18,19 @@
   </template>
   <!-- need Polymer declaration or the whole thing does not work. If you remove the Polymer declaration add `noscript` to the polymer-element declaration -->
   <script>
-    Polymer({
+    Polymer('accounts-element', {
         getTransactions: function(account) {
           transactions = account.transactions;
+        },
+
+        sort: function(items) {
+          items.sort(function(a,b) {
+            var indexA = a.transactionId, indexB = b.transactionId;
+            if (indexA > indexB) return 1;
+            if (indexA < indexB) return -1;
+            return 0;
+          });
+          return items;
         }
       });
   </script>
