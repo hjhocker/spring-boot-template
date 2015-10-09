@@ -4,18 +4,22 @@
 <polymer-element name="accounts-element">
   <template>
     <span>I'm <b>my-element</b>. This is my Shadow DOM.</span>
-    <!-- to retrieve actual data, replace example.com with a real URL -->
+    <!-- Be sure to use an acutal protocol like http or it complains -->
     <core-ajax url="http://localhost:9999/api/getAccounts" auto response="{{accounts}}" handleAs="json"></core-ajax>
-    <template repeat="{{account in accounts}}">
-      <span><p>{{account.firstName}} {{account.lastName}}</p></span>
+    <p>The number of accounts is {{accounts.length}}</p>
+    <template repeat="{{account, i in accounts}}">
+      <span><p>{{account.firstName}} {{account.lastName}}, # of transactions: {{account.transactions.length}}</p></span>
+        <template repeat="{{transaction in accounts[i].transactions}}">
+          <p>{{transaction.transactionId}} {{transaction.amount}}<p>
+        </template>
     </template>
   </template>
+  <!-- need Polymer declaration or the whole thing does not work. If you remove the Polymer declaration add `noscript` to the polymer-element declaration -->
   <script>
-      Polymer({
-        keys: function(input) {
-          return Object.keys(input);
+    Polymer({
+        getTransactions: function(account) {
+          transactions = account.transactions;
         }
       });
   </script>
-
 </polymer-element>
