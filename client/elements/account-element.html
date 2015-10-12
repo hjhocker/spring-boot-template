@@ -11,9 +11,12 @@
   <template>
     <iron-ajax url="http://localhost:9999/api/getAccounts" auto last-response="{{resp}}"></iron-ajax>
     <textarea value="{{resp.0.firstName}}"></textarea>
-    <template is="dom-repeat" items="{{resp}}">
+    <template is="dom-repeat" items="{{resp}}" as="account">
       <div>
-        <span>{{item.firstName}}</span> <span>{{item.lastName}}</span>
+        <span>{{account.firstName}}</span> <span>{{account.lastName}}</span>
+          <template is="dom-repeat" items="{{account.transactions}}" as="transaction">
+            <span><p>{{transaction.amount}}</p></span>
+          </template>
       </div>
     </template>
   </template>
