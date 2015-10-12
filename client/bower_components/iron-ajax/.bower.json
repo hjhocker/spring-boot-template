@@ -39,7 +39,6 @@
     "commit": "72f463a166013e12880bb881d680adf386520c49"
   },
   "_source": "git://github.com/polymerelements/iron-ajax.git",
-  "_target": "~1.0.6",
-  "_originalSource": "polymerelements/iron-ajax",
-  "_direct": true
+  "_target": "*",
+  "_originalSource": "polymerelements/iron-ajax"
 }
