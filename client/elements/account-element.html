@@ -9,9 +9,8 @@
 
 <dom-module id="my-element">
   <template>
-    <iron-ajax url="http://api.openweathermap.org/data/2.5/weather?q=London,uk&appid=bd82977b86bf27fb59a04b61b657fb6f"
-auto last-response="{{resp}}"></iron-ajax>
-    <textarea value="{{resp.weather.0.main}}"></textarea>
+    <iron-ajax url="http://localhost:9999/api/getAccounts" auto last-response="{{resp}}"></iron-ajax>
+    <textarea value="{{resp.0.firstName}}"></textarea>
   </template>
 </dom-module>
 
