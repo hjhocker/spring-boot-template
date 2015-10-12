@@ -13,9 +13,9 @@
     <textarea value="{{resp.0.firstName}}"></textarea>
     <template is="dom-repeat" items="{{resp}}" as="account">
       <div>
-        <span>{{account.firstName}}</span> <span>{{account.lastName}}</span>
+        <ul><b><span>{{account.firstName}}</span> <span>{{account.lastName}}</span></b></ul>
           <template is="dom-repeat" items="{{account.transactions}}" as="transaction">
-            <span><p>{{transaction.amount}}</p></span>
+            <p><span>{{transaction.amount}}</span>, <span>{{transaction.location}}</span></p>
           </template>
       </div>
     </template>
