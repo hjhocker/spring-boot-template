@@ -9,20 +9,20 @@
 <iron-ajax>
   auto
   id="get-accounts"
-  url="http://localhost:9090/api/getAccounts"
+  url="http://localhost:9999/api/getAccounts"
   handle-as="json"
-  last-response="{{accountsResponse}}"
+  on-response="hresponse"
   method="GET"
 </iron-ajax>
 
   <template
     <p>I'm a DOM element. This is my local DOM!</p>
 
-    <template is="dom-repeat" items="{{accountsResponse}}">
+    <template is="dom-repeat" items="{{accounts}}" as="item">
       <div><span>{{item.firstName}}</span></div>
     </template>
 
-</template>
+  </template>
 
   <script>
     Polymer({
