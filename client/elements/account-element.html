@@ -9,7 +9,7 @@
 
 <dom-module id="account-element">
   <template>
-    <iron-ajax url="http://localhost:9999/api/getAccounts" auto last-response="{{resp}}"></iron-ajax>
+    <iron-ajax auto url="http://localhost:9999/api/getAccounts" last-response="{{resp}}" method="GET"></iron-ajax>
     <textarea value="{{resp.0.firstName}}"></textarea>
     <template is="dom-repeat" items="{{resp}}" as="account">
       <div>

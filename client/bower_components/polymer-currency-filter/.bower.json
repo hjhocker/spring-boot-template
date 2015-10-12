@@ -1,0 +1,41 @@
+{
+  "name": "polymer-currency-filter",
+  "version": "0.1.1",
+  "authors": [
+    "Adi <skadimoolam@gmail.com>"
+  ],
+  "description": "Currency filter for Polymer Library",
+  "main": "polymer-currency-filters.html",
+  "license": "MIT",
+  "homepage": "https://github.com/skadimoolam/polymer-currency-filter/",
+  "ignore": [
+    "**/.*",
+    "README.md",
+    "test",
+    "LICENSE"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#>=0.5.5"
+  },
+  "devDependencies": {
+    "mocha": "~2.1.0",
+    "chai": "~1.10.0"
+  },
+  "keywords": [
+    "filter",
+    "polymer",
+    "currency",
+    "numbers",
+    "web-components"
+  ],
+  "_release": "0.1.1",
+  "_resolution": {
+    "type": "version",
+    "tag": "0.1.1",
+    "commit": "8f5c975baabe66ba8b0956a6ed797073a57f3d10"
+  },
+  "_source": "git://github.com/skadimoolam/polymer-currency-filter.git",
+  "_target": "~0.1.1",
+  "_originalSource": "polymer-currency-filter",
+  "_direct": true
+}
