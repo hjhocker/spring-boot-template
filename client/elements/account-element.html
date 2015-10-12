@@ -1,43 +1,29 @@
-<link rel="import" href="../bower_components/polymer/polymer.html">
+<html>
+<head>
+
 <link rel="import" href="../bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="../bower_components/polymer/polymer.html">
 
-<dom-module id="account-element">
+</head>
+<body>
 
-<style>
-</style>
-
-<iron-ajax>
-  auto
-  id="get-accounts"
-  url="http://localhost:9999/api/getAccounts"
-  handle-as="json"
-  on-response="hresponse"
-  method="GET"
-</iron-ajax>
-
-  <template
-    <p>I'm a DOM element. This is my local DOM!</p>
-
-    <template is="dom-repeat" items="{{accounts}}" as="item">
-      <div><span>{{item.firstName}}</span></div>
-    </template>
-
+<dom-module id="my-element">
+  <template>
+    <iron-ajax url="http://api.openweathermap.org/data/2.5/weather?q=London,uk&appid=bd82977b86bf27fb59a04b61b657fb6f"
+auto last-response="{{resp}}"></iron-ajax>
+    <textarea value="{{resp.weather.0.main}}"></textarea>
   </template>
-
-  <script>
-    Polymer({
-      is: "account-element",
-      // ready: function() {
-      //   this.accounts =
-      //   [
-      //     {firstName:"Harrison"},
-      //     {firstName:"Gabby"}
-      //   ];
-      // },
-      hresponse: function(data) {
-        this.accounts = data;
-      }
-    });
-  </script>
-
 </dom-module>
+
+<script>
+  Polymer({
+    is: 'my-element',
+    properties: {
+      resp: {
+        type: Object
+      }
+    }
+  });
+</script>
+
+<my-element></my-element>
