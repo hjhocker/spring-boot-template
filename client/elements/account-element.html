@@ -14,6 +14,7 @@
     <template is="dom-repeat" items="{{resp}}" as="account">
       <div>
         <ul><b><span>{{account.firstName}}</span> <span>{{account.lastName}}</span></b></ul>
+          <array-selector id="selector" items="{{resp}}" selected="{{account}}"></array-selector>
           <template is="dom-repeat" items="{{account.transactions}}" as="transaction" as-index="index">
             <p><span>{{index}}</span>, <span>{{transaction.amount}}</span>, <span>{{transaction.location}}</span></p>
           </template>
