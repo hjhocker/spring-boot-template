@@ -30,8 +30,10 @@ app.controller('AccountsController', function($scope, $http) {
   });
 });
 
-app.filter('filterByAccountName', function() {
-  return function(input, char) {
-    return 'customFilterByAccountName';
+app.filter('filterByWholeFoods', function() {
+  return function(input) {
+    console.log('testttttt');
+    console.log('inputs is ' + input);
+    return input;
   }
 });

@@ -5,10 +5,12 @@
     <p>The account holder is {{name}}</p>
   </div>
 
+  <input type="text" placeholder="Search Transactions Here" ng-model="filterText">
+
   <div ng-repeat="account in accounts | orderBy:'+accountId'">
     <b>{{account.firstName}} {{account.lastName}}</b>
-    <div ng-repeat="transaction in account.transactions | orderBy:'+location'">
-      {{transaction.amount | currency}} @ {{transaction.location | filterByAccountName}}
+    <div ng-repeat="transaction in account.transactions | orderBy:'+location' | filter:filterText ">
+      {{transaction.amount | currency}} @ {{transaction.location}}
     </div>
   </div>
 </div>
