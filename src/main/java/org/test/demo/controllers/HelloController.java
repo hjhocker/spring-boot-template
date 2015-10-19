@@ -28,7 +28,9 @@ public class HelloController {
 		List<Account> accounts = accountRepository.findAll();
 		List<String> names = new ArrayList<String>();
 		for (Account account : accounts) {
-			names.add(account.getFirstName() + " " + account.getLastName());
+			if (account.getFirstName() != null && account.getLastName() != null) {
+				names.add(account.getFirstName() + " " + account.getLastName());
+			}
 		}
 		return new ResponseEntity<>(names, HttpStatus.OK);
 	}
