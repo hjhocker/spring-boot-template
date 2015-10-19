@@ -24,4 +24,8 @@ app.controller('AccountsController', function($scope, $http) {
     .success(function(response) {
       $scope.accounts = response;
   });
+  $http.get("http://localhost:9999/api/getNames")
+    .success(function(response) {
+      $scope.names = response;
+  });
 });

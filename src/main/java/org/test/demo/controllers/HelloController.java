@@ -1,6 +1,7 @@
 package org.test.demo.controllers;
 
 import java.util.List;
+import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,14 +17,19 @@ public class HelloController {
 
 	@Autowired
 	private AccountRepository accountRepository;
-	
+
 	@RequestMapping(value = "/hello")
 	public String hello() {
 		return "Hello World\n";
 	}
-	
-	@RequestMapping(value = "/getName")
-	public ResponseEntity<List<Account>> getAccountName() {
-		return new ResponseEntity<>(accountRepository.findAll(), HttpStatus.OK);
+
+	@RequestMapping(value = "/getNames")
+	public ResponseEntity<List<String>> getAccountName() {
+		List<Account> accounts = accountRepository.findAll();
+		List<String> names = new ArrayList<String>();
+		for (Account account : accounts) {
+			names.add(account.getFirstName() + " " + account.getLastName());
+		}
+		return new ResponseEntity<>(names, HttpStatus.OK);
 	}
 }

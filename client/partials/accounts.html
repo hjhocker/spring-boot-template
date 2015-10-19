@@ -1,5 +1,10 @@
 <div>
   <h2>Accounts Page</h2>
+
+  <div ng-repeat="name in names">
+    <p>The account holder is {{name}}</p>
+  </div>
+
   <div ng-repeat="account in accounts | orderBy:'+accountId'">
     <b>{{account.firstName}} {{account.lastName}}</b>
     <div ng-repeat="transaction in account.transactions | orderBy:'+location'">
