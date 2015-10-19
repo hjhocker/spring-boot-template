@@ -8,7 +8,7 @@
   <div ng-repeat="account in accounts | orderBy:'+accountId'">
     <b>{{account.firstName}} {{account.lastName}}</b>
     <div ng-repeat="transaction in account.transactions | orderBy:'+location'">
-      {{transaction.amount | currency}} @ {{transaction.location}}
+      {{transaction.amount | currency}} @ {{transaction.location | filterByAccountName}}
     </div>
   </div>
 </div>

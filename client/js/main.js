@@ -29,3 +29,9 @@ app.controller('AccountsController', function($scope, $http) {
       $scope.names = response;
   });
 });
+
+app.filter('filterByAccountName', function() {
+  return function(input, char) {
+    return 'customFilterByAccountName';
+  }
+});
