@@ -1,10 +1,10 @@
 <div>
   Home page {{name}}
 
-  accounts here
-  <div ng-repeat="account in accounts track by $index">
+  accounts here...
+  <div ng-repeat="account in accounts | orderBy:'+accountId'">
     <b>{{account.firstName}} {{account.lastName}}</b>
-    <div ng-repeat="transaction in account.transactions">
+    <div ng-repeat="transaction in account.transactions | orderBy:'+location'">
       {{transaction.amount | currency}} @ {{transaction.location}}
     </div>
   </div>

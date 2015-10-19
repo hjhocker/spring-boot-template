@@ -17,6 +17,6 @@ app.config(function($routeProvider) {
 app.controller('HomeController', function($scope, $http) {
   $scope.name = 'Harrison';
 
-  $http.get("http://localhost:9090/api/getAccounts")
+  $http.get("http://localhost:9999/api/getAccounts")
     .success(function(response) {$scope.accounts = response;});
 });
