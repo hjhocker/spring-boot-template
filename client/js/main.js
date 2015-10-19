@@ -3,7 +3,7 @@ var app = angular.module('bankApp', ['ngRoute']);
 app.config(function($routeProvider) {
   $routeProvider
     .when('/', {
-      templateUrl: 'partials/home.html'
+      templateUrl: 'partials/home.html',
       controller: 'HomeController'
     })
     .when('/accounts', {
@@ -14,6 +14,9 @@ app.config(function($routeProvider) {
     })
 });
 
-app.controller('HomeController', function($scope) {
+app.controller('HomeController', function($scope, $http) {
+  $scope.name = 'Harrison';
 
+  $http.get("http://localhost:9090/api/getAccounts")
+    .success(function(response) {$scope.accounts = response;});
 });

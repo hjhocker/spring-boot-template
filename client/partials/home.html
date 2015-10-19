@@ -1,3 +1,11 @@
 <div>
   Home page {{name}}
+
+  accounts here
+  <div ng-repeat="account in accounts track by $index">
+    <b>{{account.firstName}} {{account.lastName}}</b>
+    <div ng-repeat="transaction in account.transactions">
+      {{transaction.amount | currency}} @ {{transaction.location}}
+    </div>
+  </div>
 </div>
