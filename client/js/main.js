@@ -7,16 +7,20 @@ app.config(function($routeProvider) {
       controller: 'HomeController'
     })
     .when('/accounts', {
-      templateUrl: 'partials/accounts.html'
+      templateUrl: 'partials/accounts.html',
+      controller: 'AccountsController'
     })
     .otherwise({
       redirectTo: 'partials/error.html'
     })
 });
 
-app.controller('HomeController', function($scope, $http) {
+app.controller('HomeController', function($scope) {
   $scope.name = 'Harrison';
 
+});
+
+app.controller('AccountsController', function($scope, $http) {
   $http.get("http://localhost:9999/api/getAccounts")
     .success(function(response) {$scope.accounts = response;});
 });

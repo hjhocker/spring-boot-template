@@ -1,3 +1,9 @@
 <div>
-  Accounts Page
+  <h2>Accounts Page</h2>
+  <div ng-repeat="account in accounts | orderBy:'+accountId'">
+    <b>{{account.firstName}} {{account.lastName}}</b>
+    <div ng-repeat="transaction in account.transactions | orderBy:'+location'">
+      {{transaction.amount | currency}} @ {{transaction.location}}
+    </div>
+  </div>
 </div>
