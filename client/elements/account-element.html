@@ -12,9 +12,9 @@
     <iron-ajax auto url="http://localhost:9999/api/getAccounts" last-response="{{resp}}" method="GET"></iron-ajax>
     <template is="dom-repeat" items="{{resp}}" as="account">
       <div>
-        <ul><b><span>{{account.firstName}}</span> <span>{{account.lastName}}</span></b></ul>
+        <u><b><span>{{account.firstName}}</span> <span>{{account.lastName}}</span></b></u>
           <array-selector id="selector" items="{{resp}}" selected="{{account}}"></array-selector>
-          <template is="dom-repeat" items="{{account.transactions}}" as="transaction" as-index="index">
+          <template is="dom-repeat" items="{{account.transactions}}" as="transaction" as-index="index" sort="_sortAccounts">
             <p><span>{{index}}</span>, <span>{{transaction.amount}}</span>, <span>{{transaction.location}}</span></p>
           </template>
       </div>
@@ -29,6 +29,16 @@
       resp: {
         type: Object
       }
+    },
+    _sortAccounts: function(items) {
+      var sorter = function (a, b) {
+        var accountA = a.accountId.toLowerCase();
+        var accountB = b.accountId.toLowerCase();
+        if (accountA < accountB)  return -1;
+        if (accountA > accountB) return 1;
+        return 0;
+      };
+    return items.sort(sorter);
     }
   });
 </script>
