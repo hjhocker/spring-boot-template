@@ -17,10 +17,11 @@ app.config(function($routeProvider) {
 
 app.controller('HomeController', function($scope) {
   $scope.name = 'Harrison';
-
 });
 
 app.controller('AccountsController', function($scope, $http) {
   $http.get("http://localhost:9999/api/getAccounts")
-    .success(function(response) {$scope.accounts = response;});
+    .success(function(response) {
+      $scope.accounts = response;
+  });
 });
