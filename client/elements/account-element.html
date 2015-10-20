@@ -10,16 +10,16 @@
 <dom-module id="account-element">
   <template>
     <iron-ajax auto url="http://localhost:9999/api/getAccounts" last-response="{{resp}}" method="GET"></iron-ajax>
-    <template is="dom-repeat" items="{{resp}}" as="account" sort="_sortTransactions">
+    <template is="dom-repeat" items="{{resp}}" as="account">
       <div>
         <ul><b><span>{{account.firstName}}</span> <span>{{account.lastName}}</span></b></ul>
-          <array-selector id="selector" items="{{resp}}" selected="{{account}}"></array-selector>
           <template id="transactionTable"
                     is="dom-repeat"
                     items="{{account.transactions}}"
                     as="transaction"
                     as-index="index"
-                    filter="_isWholeFoods">
+                    filter="_isWholeFoods"
+                    sort="_compareByTransactionId">
             <p><span>{{index}}</span>, <span>{{transaction.amount}}</span>, <span>{{transaction.location}}</span></p>
           </template>
       </div>
@@ -37,19 +37,16 @@
     },
     _isWholeFoods: function(transaction) {
       // console.log('the transaction location is ' + transaction.location);
+      console.log('is whole foods??');
       if (transaction.location == 'Whole Foods') {
         return true;
       }
       return true;
     },
-    _sortTransactions: function() {
-      var accounts = this.__data__.resp;
-      console.log('Going to sort an account transactions ' + accounts);
-    },
-    _compare: function(a,b) {
-      if (a.name < b.name)
+    _compareByTransactionId: function(a,b) {
+      if (a.transactionId < b.transactionId)
         return -1;
-      if (a.name > b.name)
+      if (a.transactionId > b.transactionId)
           return 1;
       return 0;
     }
