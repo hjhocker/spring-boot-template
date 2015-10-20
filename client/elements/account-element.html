@@ -19,7 +19,7 @@
                     as="transaction"
                     as-index="index"
                     filter="_isWholeFoods"
-                    sort="_compareByTransactionId">
+                    sort="_compare">
             <p><span>{{index}}</span>, <span>{{transaction.amount}}</span>, <span>{{transaction.location}}</span></p>
           </template>
       </div>
@@ -43,7 +43,7 @@
       }
       return true;
     },
-    _compareByTransactionId: function(a,b) {
+    _compare: function(a,b) {
       if (a.transactionId < b.transactionId)
         return -1;
       if (a.transactionId > b.transactionId)
