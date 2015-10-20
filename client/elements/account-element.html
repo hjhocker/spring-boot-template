@@ -10,11 +10,16 @@
 <dom-module id="account-element">
   <template>
     <iron-ajax auto url="http://localhost:9999/api/getAccounts" last-response="{{resp}}" method="GET"></iron-ajax>
-    <template is="dom-repeat" items="{{resp}}" as="account">
+    <template is="dom-repeat" items="{{resp}}" as="account" sort="_sortTransactions">
       <div>
         <ul><b><span>{{account.firstName}}</span> <span>{{account.lastName}}</span></b></ul>
           <array-selector id="selector" items="{{resp}}" selected="{{account}}"></array-selector>
-          <template is="dom-repeat" items="{{account.transactions}}" as="transaction" as-index="index" filter="_isWholeFoods">
+          <template id="transactionTable"
+                    is="dom-repeat"
+                    items="{{account.transactions}}"
+                    as="transaction"
+                    as-index="index"
+                    filter="_isWholeFoods">
             <p><span>{{index}}</span>, <span>{{transaction.amount}}</span>, <span>{{transaction.location}}</span></p>
           </template>
       </div>
@@ -31,11 +36,22 @@
       }
     },
     _isWholeFoods: function(transaction) {
-      console.log('the transaction location is ' + transaction.location);
+      // console.log('the transaction location is ' + transaction.location);
       if (transaction.location == 'Whole Foods') {
         return true;
       }
-      return false;
+      return true;
+    },
+    _sortTransactions: function() {
+      var accounts = this.__data__.resp;
+      console.log('Going to sort an account transactions ' + accounts);
+    },
+    _compare: function(a,b) {
+      if (a.name < b.name)
+        return -1;
+      if (a.name > b.name)
+          return 1;
+      return 0;
     }
   });
 </script>
