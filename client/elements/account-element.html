@@ -44,9 +44,12 @@
       return true;
     },
     _compare: function(a,b) {
-      if (a.transactionId < b.transactionId)
+      var key = 'transactionId';
+      var aobj = a[key];
+      var bobj = b[key];
+      if (aobj < bobj)
         return -1;
-      if (a.transactionId > b.transactionId)
+      if (aobj > bobj)
           return 1;
       return 0;
     }
