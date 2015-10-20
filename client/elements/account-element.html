@@ -14,7 +14,7 @@
       <div>
         <ul><b><span>{{account.firstName}}</span> <span>{{account.lastName}}</span></b></ul>
           <array-selector id="selector" items="{{resp}}" selected="{{account}}"></array-selector>
-          <template is="dom-repeat" items="{{account.transactions}}" as="transaction" as-index="index">
+          <template is="dom-repeat" items="{{account.transactions}}" as="transaction" as-index="index" filter="_isWholeFoods">
             <p><span>{{index}}</span>, <span>{{transaction.amount}}</span>, <span>{{transaction.location}}</span></p>
           </template>
       </div>
@@ -29,6 +29,13 @@
       resp: {
         type: Object
       }
+    },
+    _isWholeFoods: function(transaction) {
+      console.log('the transaction location is ' + transaction.location);
+      if (transaction.location == 'Whole Foods') {
+        return true;
+      }
+      return false;
     }
   });
 </script>
