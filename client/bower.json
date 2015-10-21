@@ -21,6 +21,7 @@
     "core-ajax": "Polymer/core-ajax",
     "iron-ajax": "polymerelements/iron-ajax",
     "polymer-currency-filter": "~0.1.1",
+    "paper-dropdown-menu": "polymerelements/paper-dropdown-menu",
     "polymer-expressions": "Polymer/polymer-expressions#~0.5.6"
   },
   "resolutions": {

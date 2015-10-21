@@ -2,6 +2,7 @@
 <head>
 
 <link rel="import" href="../bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="../bower_components/paper-dropdown-menu/paper-dropdown-menu.html">
 <link rel="import" href="../bower_components/polymer/polymer.html">
 
 </head>
@@ -9,6 +10,12 @@
 
 <dom-module id="account-element">
   <template>
+    <paper-dropdown-menu id="dropdownMenu" label="Label Here" >
+            <paper-menu id="menu" class="dropdown-content" selected="0">
+                <paper-item id="option1">Option 1</paper-item>
+                <paper-item id="option2">Option 2</paper-item>
+            </paper-menu>
+    </paper-dropdown-menu>
     <iron-ajax auto url="http://localhost:9999/api/getAccounts" last-response="{{resp}}" method="GET"></iron-ajax>
     <template is="dom-repeat" items="{{resp}}" as="account">
       <div>
@@ -35,6 +42,10 @@
         type: Object
       }
     },
+    sortoption: 'location',
+    updateTransactionSortOption: function() {
+      console.log('hehehehehe');
+    },
     _isWholeFoods: function(transaction) {
       // console.log('the transaction location is ' + transaction.location);
       console.log('is whole foods??');
@@ -44,7 +55,7 @@
       return true;
     },
     _compare: function(a,b) {
-      var key = 'transactionId';
+      var key = 'location';
       var aobj = a[key];
       var bobj = b[key];
       if (aobj < bobj)
