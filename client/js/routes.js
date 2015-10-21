@@ -31,9 +31,37 @@ app.controller('AccountsController', function($scope, $http) {
 });
 
 app.filter('filterByWholeFoods', function() {
-  return function(input) {
+  return function(transaction) {
     console.log('testttttt');
     console.log('inputs is ' + input);
-    return input;
+    if (transaction === 'Whole Foods') {
+      return transaction;
+    }
+    return 'Not Whole Foods';
+  }
+});
+
+app.filter('filterList', function() {
+  return function(transacitons) {
+    console.log('filter list' + transacitons);
+    var out = [];
+    for (i = 0; i < transacitons.length; i++) {
+      if (transacitons[i].location === 'Arcade') {
+        out.push(transacitons[i]);
+      }
+    }
+    return transacitons;
+  }
+});
+
+app.filter('filterByKeyWord', function() {
+  return function(input) {
+    var response = [];
+    angular.forEach(input, function(thing){
+      if (thing == 'search') {
+        response.push(thing);
+      }
+    })
+    return response;
   }
 });

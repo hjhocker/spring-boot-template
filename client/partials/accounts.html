@@ -9,7 +9,7 @@
 
   <div ng-repeat="account in accounts | orderBy:'+accountId'">
     <b>{{account.firstName}} {{account.lastName}}</b>
-    <div ng-repeat="transaction in account.transactions | orderBy:'+location' | filter:filterText ">
+    <div ng-repeat="transaction in account.transactions | orderBy:'+location' | filter:filterText | filterList">
       {{transaction.amount | currency}} @ {{transaction.location}}
     </div>
   </div>
