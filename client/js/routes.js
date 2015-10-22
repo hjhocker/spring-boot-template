@@ -44,6 +44,7 @@ app.filter('filterByWholeFoods', function() {
 app.filter('filterList', function() {
   return function(transacitons) {
     console.log('filter list' + transacitons);
+    console.log('filter text ');
     var out = [];
     for (i = 0; i < transacitons.length; i++) {
       if (transacitons[i].location === 'Arcade') {
@@ -54,7 +55,7 @@ app.filter('filterList', function() {
   }
 });
 
-app.filter('filterByKeyWord', function() {
+app.filter('filterByKeyWord', function($scope) {
   return function(input) {
     var response = [];
     angular.forEach(input, function(thing){
